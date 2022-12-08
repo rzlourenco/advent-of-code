@@ -21,7 +21,7 @@ bin: $(_EXECUTABLES)
 
 bin/%: %.c
 	@mkdir -p $(@D)
-	@echo -e "CC\t$(^)"
+	@echo -e "CC\t$(filter %.c,$(^))"
 	@$(CC) -o $(@) $(CFLAGS) $(filter %.c,$(^))
 
 $(_EXECUTABLES): Makefile
