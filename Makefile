@@ -1,8 +1,8 @@
 CC := musl-gcc
-CFLAGS := -O3 -static
+CFLAGS := -std=c2x -O2 -static
 
 YEARS := 2022
-DAYS_2022 := 08
+DAYS_2022 := 09
 
 #
 
