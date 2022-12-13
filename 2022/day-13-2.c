@@ -45,7 +45,7 @@ static void
 indent(int depth)
 {
     while (depth-- > 0) {
-        printf("  ");
+        // printf("  ");
     }
 }
 
@@ -55,7 +55,7 @@ print_compare(char *left, char *right, int depth)
     indent(depth);
     int len_left = value_length(left);
     int len_right = value_length(right);
-    printf("- Compare %.*s vs %.*s\n", len_left, left, len_right, right);
+    // printf("- Compare %.*s vs %.*s\n", len_left, left, len_right, right);
 }
 
 static void
@@ -108,12 +108,13 @@ order_list_list(
     bool exhausted_right = *left != ']' && *right == ']';
     if (exhausted_left) {
         indent(depth + 1);
-        puts("- Left side ran out of items, so inputs are in the right order");
+        // puts("- Left side ran out of items, so inputs are in the right
+        // order");
         r = ORDERED;
     } else if (exhausted_right) {
         indent(depth + 1);
-        puts("- Right side ran out of items, so inputs are not in the right "
-             "order");
+        // puts("- Right side ran out of items, so inputs are not in the right "
+        // "order");
         r = NOT_ORDERED;
     }
 
@@ -145,7 +146,8 @@ order_list_number(
     assert(*right != ']' && *right != '[');
     if (*left == ']') {
         indent(depth + 1);
-        puts("- Left side ran out of items, so inputs are in the right order");
+        // puts("- Left side ran out of items, so inputs are in the right
+        // order");
         while (*right != ']') {
             ++right;
         }
@@ -163,8 +165,8 @@ order_list_number(
 
     if (*left != ']') {
         indent(depth + 1);
-        puts("- Right side ran out of items, so inputs are not in the right "
-             "order");
+        // puts("- Right side ran out of items, so inputs are not in the right "
+        // "order");
         discard_to_end_of_list(left, &left);
         r = NOT_ORDERED;
     }
@@ -189,8 +191,8 @@ order_number_list(
     int r = NO_DECISION;
     if (*right == ']') {
         indent(depth + 1);
-        puts("- Right side ran out of items, so inputs are not in the right "
-             "order");
+        // puts("- Right side ran out of items, so inputs are not in the right "
+        // "order");
         while (*left != ']') {
             ++left;
         }
@@ -208,7 +210,8 @@ order_number_list(
 
     if (*right != ']') {
         indent(depth + 1);
-        puts("- Left side ran out of items, so inputs are in the right order");
+        // puts("- Left side ran out of items, so inputs are in the right
+        // order");
         discard_to_end_of_list(right, &right);
         r = ORDERED;
     }
@@ -239,12 +242,13 @@ order_number_number(
     assert(errno == 0);
     if (l < r) {
         indent(depth + 1);
-        puts("- Left side is smaller, so inputs are in the right order");
+        // puts("- Left side is smaller, so inputs are in the right order");
         return ORDERED;
     }
     if (l > r) {
         indent(depth + 1);
-        puts("- Right side is smaller, so inputs are not in the right order");
+        // puts("- Right side is smaller, so inputs are not in the right
+        // order");
         return NOT_ORDERED;
     }
     return NO_DECISION;
@@ -297,15 +301,15 @@ main()
     strcpy(all_packets[packet_count++], "[[2]]");
     strcpy(all_packets[packet_count++], "[[6]]");
     for (int i = 0; i < packet_count; i++) {
-        puts(all_packets[i]);
+        // puts(all_packets[i]);
     }
-    puts("");
+    // puts("");
 
     qsort(all_packets, packet_count, sizeof(all_packets[0]), compare_packets);
     for (int i = 0; i < packet_count; i++) {
-        puts(all_packets[i]);
+        // puts(all_packets[i]);
     }
-    puts("");
+    // puts("");
 
     int divider_2 = -1, divider_6 = -1;
     for (int i = 0; i < packet_count; ++i) {
