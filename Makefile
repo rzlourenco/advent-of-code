@@ -2,7 +2,7 @@ CC := musl-gcc
 CFLAGS := -std=c2x -O2 -static
 
 YEARS := 2022
-DAYS_2022 := 13
+DAYS_2022 := 14
 
 #
 
